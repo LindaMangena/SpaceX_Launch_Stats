@@ -1,31 +1,24 @@
 import logo from "./logo.png";
-import Launches from './Components/Launches'
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider
-  // useQuery,
-  // gql
-} from "@apollo/client";
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo";
 import "./App.css";
-
+import Launches from "./Components/Launches";
 
 const client = new ApolloClient({
-
-  uri : 'http://localhost:8080/graphql',
-  cache: new InMemoryCache()
+  uri: 'http://localhost:8080/graphql'
 })
 
 function App() {
   return (
     <ApolloProvider client={client}>
-    <div className="App">
+    <div className="container">
       <img
         src={logo}
         alt="SpaceX"
         style={{ width: 200, display: "block", margin: "auto" }}
       />
-      <Launches/>
+
+      <Launches />
     </div>
     </ApolloProvider>
   );
